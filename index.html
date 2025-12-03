@@ -515,6 +515,7 @@
             <a href="#llms">LLMs</a>
             <a href="#vectordb">Vector DBs</a>
             <a href="#langchain">LangChain</a>
+            <a href="#agent-protocols">Agent Protocols</a>
             <a href="#cloud-ai">Cloud AI</a>
             <a href="#rag">RAG</a>
             <a href="#agents">Agents</a>
@@ -1530,6 +1531,142 @@
                         <a href="https://github.com/langchain-ai/langserve" class="resource-link" target="_blank">💻 LangServe GitHub</a>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Agent Protocols & Ecosystem -->
+        <section id="agent-protocols" class="section">
+            <div class="section-header">
+                <div class="section-number">9</div>
+                <h2 class="section-title">Agent Protocols, Routing & Ecosystem</h2>
+            </div>
+
+            <div class="section-intro">
+                Modern AI systems are no longer just “a single model behind an API”. They are <strong>networks of agents, tools, and services</strong> that must interoperate. These protocols and frameworks define <strong>how LLMs and agents route requests, access tools, and talk to each other</strong>.
+            </div>
+
+            <div class="grid">
+
+                <!-- Semantic Router -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🧭</div>
+                        <div>
+                            <h3 class="card-title">
+                                Semantic Router
+                                <span class="badge badge-intermediate">Intermediate</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <p class="card-description">
+                        A fast, semantic decision-making layer for LLMs and agents. Instead of asking the LLM “which tool to use?” every time, you use vector similarity to <strong>route requests deterministically</strong> to tools, flows or guards.
+                    </p>
+                    <ul class="key-points">
+                        <li>Route user queries to tools / agents using embeddings</li>
+                        <li>Deterministic behavior vs. free-form LLM reasoning</li>
+                        <li>Useful for RAG gateways, safety filters and multi-app routing</li>
+                        <li>Integrates well with LangChain, RAG, and agent frameworks</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources</div>
+                        <a href="https://github.com/aurelio-labs/semantic-router" class="resource-link" target="_blank">
+                            💻 Semantic Router GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Model Context Protocol (MCP) -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🌐</div>
+                        <div>
+                            <h3 class="card-title">
+                                Model Context Protocol (MCP)
+                                <span class="badge badge-essential">Essential</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <p class="card-description">
+                        An open protocol that standardizes how LLM apps connect to <strong>tools, APIs and external data</strong>. MCP defines servers (which expose tools/data) and clients (LLM apps like IDEs, chat UIs) that consume them.
+                    </p>
+                    <ul class="key-points">
+                        <li>Standard way to plug tools and data into LLMs</li>
+                        <li>Used by ecosystems like GitHub Copilot & others</li>
+                        <li>Language-agnostic server implementations</li>
+                        <li>Great for building reusable “tool backends” for agents</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources</div>
+                        <a href="https://github.com/modelcontextprotocol" class="resource-link" target="_blank">
+                            💻 MCP GitHub Org
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Agent-to-Agent Protocol (A2A) -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🤝</div>
+                        <div>
+                            <h3 class="card-title">
+                                Agent-to-Agent Protocol (A2A)
+                                <span class="badge badge-advanced">Advanced</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <p class="card-description">
+                        An open standard for <strong>communication between AI agents</strong> built on different frameworks, vendors, or stacks. Complements MCP by defining how independent agents can discover each other, exchange messages and collaborate.
+                    </p>
+                    <ul class="key-points">
+                        <li>Interoperability layer for multi-agent systems</li>
+                        <li>Standard message formats and interaction patterns</li>
+                        <li>Allows agents from different vendors to coordinate tasks</li>
+                        <li>Useful for enterprise-scale “agent mesh” architectures</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources</div>
+                        <a href="https://a2a-protocol.org/latest/#get-started-with-a2a" class="resource-link" target="_blank">
+                            🔗 A2A – Get Started
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Google Agent Development Kit (ADK) -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🔧</div>
+                        <div>
+                            <h3 class="card-title">
+                                Google Agent Development Kit (ADK)
+                                <span class="badge badge-production">Production</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <p class="card-description">
+                        An open-source framework from Google for building <strong>agentic applications</strong>. Optimized for Gemini and Google Cloud, but designed to be model-agnostic and deployment-agnostic.
+                    </p>
+                    <ul class="key-points">
+                        <li>Structured way to define agents, tools and workflows</li>
+                        <li>Supports multi-agent orchestration and evaluation</li>
+                        <li>Integrates with Vertex AI / Agent Builder</li>
+                        <li>Makes agent development feel like standard software engineering</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources</div>
+                        <a href="https://google.github.io/adk-docs/" class="resource-link" target="_blank">
+                            📘 Google ADK Docs
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="section-intro" style="margin-top: 1.5rem;">
+                <strong>How these fit together in your roadmap</strong><br>
+                - <strong>Semantic Router</strong>: Decide <em>where</em> to send a request (which tool/agent/flow). :contentReference[oaicite:0]{index=0}<br>
+                - <strong>MCP</strong>: Standard way to expose tools & data sources to LLMs. :contentReference[oaicite:1]{index=1}<br>
+                - <strong>A2A</strong>: Standard for agents to talk to other agents across vendors/frameworks. :contentReference[oaicite:2]{index=2}<br>
+                - <strong>Google ADK</strong>: Framework to actually build and orchestrate those agents in production. :contentReference[oaicite:3]{index=3}
             </div>
         </section>
 
