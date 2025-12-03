@@ -1,0 +1,2375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI/ML Engineering Learning Path</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #0891b2;
+            --accent: #f59e0b;
+            --bg: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --text: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #0891b2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .logo-container {
+            margin-bottom: 2rem;
+        }
+
+        .company-logo {
+            max-width: 200px;
+            max-height: 80px;
+            height: auto;
+            width: auto;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            opacity: 0.95;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .nav {
+            background: var(--bg-secondary);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .section-number {
+            background: var(--primary);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .section-intro {
+            background: var(--bg-tertiary);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .key-points {
+            list-style: none;
+            padding: 0;
+        }
+
+        .key-points li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .key-points li::before {
+            content: '•';
+            position: absolute;
+            left: 0.5rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-left: 0.5rem;
+        }
+
+        .badge-essential {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .badge-intermediate {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-advanced {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .badge-production {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .resources {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .resource-title {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .resource-link {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            background: var(--bg-secondary);
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .resource-link:hover {
+            background: var(--primary);
+            color: white;
+            padding-left: 1rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 14px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            box-shadow: 0 0 0 4px white;
+        }
+
+        .timeline-content {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-duration {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .timeline-tag {
+            background: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, white 100%);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+        }
+
+        .project-level {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .level-beginner {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .level-intermediate {
+            background: #fed7aa;
+            color: #9a3412;
+        }
+
+        .level-advanced {
+            background: #ddd6fe;
+            color: #5b21b6;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: white;
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+        }
+
+        .cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            background: white;
+            color: var(--primary);
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .footer {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 15px;
+            }
+            
+            .timeline-item {
+                padding-left: 60px;
+            }
+            
+            .nav-links {
+                gap: 0.5rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-container">
+            <img src="logo_1.webp" alt="Company Logo" class="company-logo">
+        </div>
+        <h1>AI/ML Engineering Learning Path</h1>
+        <p>A Comprehensive Guide to Building Production-Ready AI Systems for Industry-Level Projects</p>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-links">
+            <a href="#overview">Overview</a>
+            <a href="#python">Python</a>
+            <a href="#ml">ML Foundations</a>
+            <a href="#ml-domains">ML Domains</a>
+            <a href="#llms">LLMs</a>
+            <a href="#vectordb">Vector DBs</a>
+            <a href="#langchain">LangChain</a>
+            <a href="#cloud-ai">Cloud AI</a>
+            <a href="#rag">RAG</a>
+            <a href="#agents">Agents</a>
+            <a href="#production">Production</a>
+            <a href="#timeline">Timeline</a>
+            <a href="#projects">Projects</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <section id="overview" class="section">
+            <div class="section-header">
+                <div class="section-number">📋</div>
+                <h2 class="section-title">Program Overview</h2>
+            </div>
+            <div class="section-intro">
+                This comprehensive learning path takes freshers from Python fundamentals to building production-ready AI/ML systems. Focus on modern AI technologies including Large Language Models, RAG systems, AI agents, and real-world deployment.
+            </div>
+            
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🎯</div>
+                        <h3 class="card-title">Learning Objectives</h3>
+                    </div>
+                    <ul class="key-points">
+                        <li>Master Python for AI/ML development</li>
+                        <li>Understand ML fundamentals</li>
+                        <li>Build LLM-powered applications</li>
+                        <li>Create production-grade RAG systems</li>
+                        <li>Develop autonomous AI agents</li>
+                        <li>Deploy scalable AI solutions</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">💼</div>
+                        <h3 class="card-title">Industry Relevance</h3>
+                    </div>
+                    <ul class="key-points">
+                        <li>Aligned with market demands</li>
+                        <li>Practical, real-world applications</li>
+                        <li>Latest AI technologies</li>
+                        <li>Production deployment focus</li>
+                        <li>Industry best practices</li>
+                        <li>Portfolio-building projects</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📈</div>
+                        <h3 class="card-title">Career Paths</h3>
+                    </div>
+                    <ul class="key-points">
+                        <li>AI/ML Engineer</li>
+                        <li>LLM Application Developer</li>
+                        <li>AI Solutions Architect</li>
+                        <li>MLOps Engineer</li>
+                        <li>Research Engineer</li>
+                        <li>AI Product Developer</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="python" class="section">
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <h2 class="section-title">Python Essentials for AI/ML</h2>
+            </div>
+            <div class="section-intro">
+                Master Python fundamentals and tools essential for AI/ML development. This foundation is critical for all subsequent learning.
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🐍</div>
+                        <div>
+                            <h3 class="card-title">Core Python<span class="badge badge-essential">Essential</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Build strong foundation in Python programming.</p>
+                    <ul class="key-points">
+                        <li>Data structures: lists, dicts, sets</li>
+                        <li>OOP: classes, inheritance</li>
+                        <li>Error handling & exceptions</li>
+                        <li>Decorators and generators</li>
+                        <li>File I/O and context managers</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://docs.python.org/3/" class="resource-link" target="_blank">📘 Python Documentation</a>
+                        <a href="https://www.youtube.com/playlist?list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU" class="resource-link" target="_blank">📺 Corey Schafer's Tutorial</a>
+                        <a href="https://realpython.com/" class="resource-link" target="_blank">📚 Real Python</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📦</div>
+                        <div>
+                            <h3 class="card-title">Packages & Environments<span class="badge badge-essential">Essential</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Manage dependencies and isolated environments.</p>
+                    <ul class="key-points">
+                        <li>Virtual environments (venv, conda)</li>
+                        <li>Package management with pip</li>
+                        <li>Poetry for dependency management</li>
+                        <li>requirements.txt & pyproject.toml</li>
+                        <li>Environment variables (.env files)</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://docs.python.org/3/library/venv.html" class="resource-link" target="_blank">📘 venv Documentation</a>
+                        <a href="https://python-poetry.org/docs/" class="resource-link" target="_blank">📘 Poetry Docs</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🔀</div>
+                        <div>
+                            <h3 class="card-title">Git & Version Control<span class="badge badge-essential">Essential</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Master version control for collaboration.</p>
+                    <ul class="key-points">
+                        <li>Git basics: commit, push, pull, merge</li>
+                        <li>Branching strategies</li>
+                        <li>Pull requests & code reviews</li>
+                        <li>Conflict resolution</li>
+                        <li>.gitignore best practices</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://git-scm.com/doc" class="resource-link" target="_blank">📘 Git Documentation</a>
+                        <a href="https://learngitbranching.js.org/" class="resource-link" target="_blank">🎮 Interactive Git Learning</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🐳</div>
+                        <div>
+                            <h3 class="card-title">Docker<span class="badge badge-production">Production</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Containerization for consistent deployment.</p>
+                    <ul class="key-points">
+                        <li>Docker basics: images & containers</li>
+                        <li>Dockerfile creation</li>
+                        <li>Docker Compose for multi-container</li>
+                        <li>Volume management</li>
+                        <li>Best practices for ML apps</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://docs.docker.com/" class="resource-link" target="_blank">📘 Docker Docs</a>
+                        <a href="https://www.youtube.com/watch?v=fqMOX6JJhGo" class="resource-link" target="_blank">📺 Docker Tutorial</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🔢</div>
+                        <div>
+                            <h3 class="card-title">NumPy & Pandas<span class="badge badge-essential">Essential</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Data manipulation libraries for ML.</p>
+                    <ul class="key-points">
+                        <li>NumPy arrays & operations</li>
+                        <li>Broadcasting and vectorization</li>
+                        <li>Pandas DataFrames</li>
+                        <li>Data cleaning & preprocessing</li>
+                        <li>Grouping & aggregation</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://numpy.org/doc/" class="resource-link" target="_blank">📘 NumPy Docs</a>
+                        <a href="https://pandas.pydata.org/docs/" class="resource-link" target="_blank">📘 Pandas Docs</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">⚡</div>
+                        <div>
+                            <h3 class="card-title">FastAPI<span class="badge badge-production">Production</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Build high-performance ML APIs.</p>
+                    <ul class="key-points">
+                        <li>REST API design</li>
+                        <li>Pydantic models</li>
+                        <li>Authentication (JWT, OAuth2)</li>
+                        <li>Background tasks</li>
+                        <li>OpenAPI documentation</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://fastapi.tiangolo.com/" class="resource-link" target="_blank">📘 FastAPI Docs</a>
+                        <a href="https://www.youtube.com/watch?v=7t2alSnE2-I" class="resource-link" target="_blank">📺 FastAPI Course</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ml" class="section">
+            <div class="section-header">
+                <div class="section-number">2</div>
+                <h2 class="section-title">Machine Learning Foundations</h2>
+            </div>
+            <div class="section-intro">
+                Establish solid understanding of ML principles, algorithms, and evaluation techniques.
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🧠</div>
+                        <div>
+                            <h3 class="card-title">Core ML Concepts<span class="badge badge-essential">Essential</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Supervised vs Unsupervised learning</li>
+                        <li>Classification & Regression</li>
+                        <li>Overfitting & Underfitting</li>
+                        <li>Bias-Variance tradeoff</li>
+                        <li>Train/Val/Test split</li>
+                        <li>Cross-validation</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://www.coursera.org/learn/machine-learning" class="resource-link" target="_blank">📺 Andrew Ng's Course</a>
+                        <a href="https://www.youtube.com/playlist?list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF" class="resource-link" target="_blank">📺 StatQuest ML</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🔧</div>
+                        <div>
+                            <h3 class="card-title">Feature Engineering<span class="badge badge-essential">Essential</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Data cleaning & preprocessing</li>
+                        <li>Handling missing values</li>
+                        <li>Encoding categorical variables</li>
+                        <li>Feature scaling & normalization</li>
+                        <li>Feature selection</li>
+                        <li>Creating interaction features</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://scikit-learn.org/stable/modules/preprocessing.html" class="resource-link" target="_blank">📘 Scikit-learn Preprocessing</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📊</div>
+                        <div>
+                            <h3 class="card-title">Model Evaluation<span class="badge badge-essential">Essential</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Accuracy, Precision, Recall, F1</li>
+                        <li>Confusion matrices</li>
+                        <li>ROC curves & AUC</li>
+                        <li>Regression metrics (MAE, RMSE, R²)</li>
+                        <li>K-fold cross-validation</li>
+                        <li>Hyperparameter tuning</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://scikit-learn.org/stable/modules/model_evaluation.html" class="resource-link" target="_blank">📘 Model Evaluation Guide</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🤖</div>
+                        <div>
+                            <h3 class="card-title">Scikit-learn<span class="badge badge-essential">Essential</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Linear & Logistic Regression</li>
+                        <li>Decision Trees & Random Forests</li>
+                        <li>Support Vector Machines</li>
+                        <li>K-Means clustering</li>
+                        <li>Gradient Boosting (XGBoost)</li>
+                        <li>Pipeline creation</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://scikit-learn.org/stable/" class="resource-link" target="_blank">📘 Scikit-learn Docs</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ml-domains" class="section">
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <h2 class="section-title">ML Domains & Modalities</h2>
+            </div>
+            <div class="section-intro">
+                Master different ML domains including text, computer vision, and audio processing. Understand domain-specific architectures and techniques.
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📝</div>
+                        <div>
+                            <h3 class="card-title">Natural Language Processing<span class="badge badge-intermediate">Intermediate</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Text processing and NLP fundamentals.</p>
+                    <ul class="key-points">
+                        <li>Text preprocessing & tokenization</li>
+                        <li>Word embeddings (Word2Vec, GloVe)</li>
+                        <li>RNNs, LSTMs, GRUs</li>
+                        <li>Attention mechanisms</li>
+                        <li>Text classification & sentiment analysis</li>
+                        <li>Named Entity Recognition (NER)</li>
+                        <li>Text summarization</li>
+                        <li>Machine translation basics</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://www.nltk.org/" class="resource-link" target="_blank">📘 NLTK Documentation</a>
+                        <a href="https://spacy.io/" class="resource-link" target="_blank">📘 spaCy Library</a>
+                        <a href="https://www.youtube.com/watch?v=8rXD5-xhemo" class="resource-link" target="_blank">📺 NLP Zero to Hero</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">👁️</div>
+                        <div>
+                            <h3 class="card-title">Computer Vision<span class="badge badge-intermediate">Intermediate</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Image and video processing with deep learning.</p>
+                    <ul class="key-points">
+                        <li>Image preprocessing & augmentation</li>
+                        <li>CNNs: LeNet, AlexNet, VGG, ResNet</li>
+                        <li>Image classification & object detection</li>
+                        <li>YOLO, R-CNN, Fast R-CNN</li>
+                        <li>Semantic segmentation (U-Net, Mask R-CNN)</li>
+                        <li>Face recognition & detection</li>
+                        <li>OCR (Optical Character Recognition)</li>
+                        <li>Image generation (GANs, Diffusion models)</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://opencv.org/" class="resource-link" target="_blank">📘 OpenCV Documentation</a>
+                        <a href="https://pytorch.org/vision/stable/index.html" class="resource-link" target="_blank">📘 torchvision</a>
+                        <a href="https://www.youtube.com/watch?v=GIsg-ZUy0MY" class="resource-link" target="_blank">📺 Computer Vision Course</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🔊</div>
+                        <div>
+                            <h3 class="card-title">Audio & Speech Processing<span class="badge badge-intermediate">Intermediate</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Speech recognition, audio analysis, and generation.</p>
+                    <ul class="key-points">
+                        <li>Audio preprocessing & feature extraction</li>
+                        <li>Mel spectrograms & MFCCs</li>
+                        <li>Speech-to-Text (Whisper, Wav2Vec2)</li>
+                        <li>Text-to-Speech (TTS)</li>
+                        <li>Speaker recognition & diarization</li>
+                        <li>Audio classification</li>
+                        <li>Music generation & analysis</li>
+                        <li>Voice cloning basics</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://librosa.org/" class="resource-link" target="_blank">📘 Librosa Library</a>
+                        <a href="https://github.com/openai/whisper" class="resource-link" target="_blank">📘 OpenAI Whisper</a>
+                        <a href="https://www.youtube.com/watch?v=ZqpSb5p1xQo" class="resource-link" target="_blank">📺 Audio Deep Learning</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🖼️</div>
+                        <div>
+                            <h3 class="card-title">Multi-Modal AI<span class="badge badge-advanced">Advanced</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Combining multiple modalities for richer AI applications.</p>
+                    <ul class="key-points">
+                        <li>Vision-Language models (CLIP, BLIP)</li>
+                        <li>Image captioning</li>
+                        <li>Visual Question Answering (VQA)</li>
+                        <li>Audio-visual learning</li>
+                        <li>Multi-modal embeddings</li>
+                        <li>Cross-modal retrieval</li>
+                        <li>GPT-4V and multi-modal LLMs</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://github.com/openai/CLIP" class="resource-link" target="_blank">📘 CLIP Repository</a>
+                        <a href="https://huggingface.co/docs/transformers/model_doc/blip" class="resource-link" target="_blank">📘 BLIP Documentation</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🧪</div>
+                        <div>
+                            <h3 class="card-title">Deep Learning Frameworks<span class="badge badge-essential">Essential</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Master popular deep learning frameworks.</p>
+                    <ul class="key-points">
+                        <li>PyTorch fundamentals & tensors</li>
+                        <li>TensorFlow & Keras</li>
+                        <li>Building custom neural networks</li>
+                        <li>Training loops & optimization</li>
+                        <li>GPU acceleration & mixed precision</li>
+                        <li>Model checkpointing & saving</li>
+                        <li>Transfer learning</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://pytorch.org/tutorials/" class="resource-link" target="_blank">📘 PyTorch Tutorials</a>
+                        <a href="https://www.tensorflow.org/tutorials" class="resource-link" target="_blank">📘 TensorFlow Tutorials</a>
+                        <a href="https://www.youtube.com/watch?v=c36lUUr864M" class="resource-link" target="_blank">📺 PyTorch Course</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">⚡</div>
+                        <div>
+                            <h3 class="card-title">Model Optimization<span class="badge badge-advanced">Advanced</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Techniques for efficient model deployment.</p>
+                    <ul class="key-points">
+                        <li>Model quantization (INT8, FP16)</li>
+                        <li>Pruning & knowledge distillation</li>
+                        <li>ONNX for model conversion</li>
+                        <li>TensorRT for inference optimization</li>
+                        <li>Model compression techniques</li>
+                        <li>Edge deployment optimization</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://onnx.ai/" class="resource-link" target="_blank">📘 ONNX</a>
+                        <a href="https://developer.nvidia.com/tensorrt" class="resource-link" target="_blank">📘 TensorRT</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="llms" class="section">
+            <div class="section-header">
+                <div class="section-number">4</div>
+                <h2 class="section-title">Large Language Models (LLMs)</h2>
+            </div>
+            <div class="section-intro">
+                Deep dive into transformer architectures, prompt engineering, and working with state-of-the-art language models.
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🔮</div>
+                        <div>
+                            <h3 class="card-title">Transformer Architecture<span class="badge badge-advanced">Advanced</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Self-attention mechanism</li>
+                        <li>Multi-head attention</li>
+                        <li>Positional encodings</li>
+                        <li>Encoder-decoder structure</li>
+                        <li>GPT vs BERT architectures</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://jalammar.github.io/illustrated-transformer/" class="resource-link" target="_blank">📝 Illustrated Transformer</a>
+                        <a href="https://www.youtube.com/playlist?list=PLoROMvodv4rOSH4v6133s9LFPRHjEmbmJ" class="resource-link" target="_blank">📺 Stanford CS224N</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🎯</div>
+                        <div>
+                            <h3 class="card-title">Prompt Engineering<span class="badge badge-essential">Essential</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Zero-shot, few-shot learning</li>
+                        <li>Chain-of-thought prompting</li>
+                        <li>Tree of Thoughts</li>
+                        <li>ReAct framework</li>
+                        <li>System messages & roles</li>
+                        <li>Temperature & sampling</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://platform.openai.com/docs/guides/prompt-engineering" class="resource-link" target="_blank">📘 OpenAI Prompt Guide</a>
+                        <a href="https://www.promptingguide.ai/" class="resource-link" target="_blank">📚 Prompting Guide</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🔌</div>
+                        <div>
+                            <h3 class="card-title">LLM APIs<span class="badge badge-essential">Essential</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>OpenAI API (GPT-4, GPT-3.5)</li>
+                        <li>Anthropic Claude API</li>
+                        <li>Open-source models (Llama, Mistral)</li>
+                        <li>Hugging Face Transformers</li>
+                        <li>Rate limiting & optimization</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://platform.openai.com/docs/" class="resource-link" target="_blank">📘 OpenAI Docs</a>
+                        <a href="https://docs.anthropic.com/" class="resource-link" target="_blank">📘 Anthropic Docs</a>
+                        <a href="https://huggingface.co/docs/transformers/" class="resource-link" target="_blank">📘 HuggingFace</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🎓</div>
+                        <div>
+                            <h3 class="card-title">Embeddings<span class="badge badge-essential">Essential</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Word vs contextual embeddings</li>
+                        <li>Sentence & document embeddings</li>
+                        <li>Similarity metrics (cosine, euclidean)</li>
+                        <li>OpenAI text-embedding-ada-002</li>
+                        <li>Sentence-transformers</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://platform.openai.com/docs/guides/embeddings" class="resource-link" target="_blank">📘 OpenAI Embeddings</a>
+                        <a href="https://www.sbert.net/" class="resource-link" target="_blank">📘 Sentence Transformers</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">⚙️</div>
+                        <div>
+                            <h3 class="card-title">Fine-tuning<span class="badge badge-advanced">Advanced</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Full fine-tuning vs PEFT</li>
+                        <li>LoRA (Low-Rank Adaptation)</li>
+                        <li>QLoRA for efficient training</li>
+                        <li>RLHF concepts</li>
+                        <li>Dataset preparation</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://huggingface.co/docs/peft/" class="resource-link" target="_blank">📘 PEFT Documentation</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">💰</div>
+                        <div>
+                            <h3 class="card-title">Token Management<span class="badge badge-production">Production</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Tokenization (BPE, WordPiece)</li>
+                        <li>Token counting & estimation</li>
+                        <li>Context window management</li>
+                        <li>Sliding window techniques</li>
+                        <li>Cost optimization</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://platform.openai.com/tokenizer" class="resource-link" target="_blank">🔧 OpenAI Tokenizer</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="vectordb" class="section">
+            <div class="section-header">
+                <div class="section-number">5</div>
+                <h2 class="section-title">Vector Databases</h2>
+            </div>
+            <div class="section-intro">
+                Master vector storage and similarity search - the backbone of modern RAG systems.
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🗄️</div>
+                        <div>
+                            <h3 class="card-title">Vector DB Fundamentals<span class="badge badge-essential">Essential</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Vector embeddings storage</li>
+                        <li>Similarity search (ANN, KNN)</li>
+                        <li>Indexing methods (HNSW, IVF)</li>
+                        <li>Distance metrics</li>
+                        <li>Metadata filtering</li>
+                        <li>Hybrid search</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://www.pinecone.io/learn/vector-database/" class="resource-link" target="_blank">📚 Vector DB Intro</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🌲</div>
+                        <div>
+                            <h3 class="card-title">Pinecone<span class="badge badge-intermediate">Intermediate</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Creating & configuring indexes</li>
+                        <li>Upserting vectors with metadata</li>
+                        <li>Querying & filtering</li>
+                        <li>Namespaces for multi-tenancy</li>
+                        <li>Performance optimization</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://docs.pinecone.io/" class="resource-link" target="_blank">📘 Pinecone Docs</a>
+                        <a href="https://www.youtube.com/watch?v=gTWpuAjMKSs" class="resource-link" target="_blank">📺 Pinecone Tutorial</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🎨</div>
+                        <div>
+                            <h3 class="card-title">ChromaDB<span class="badge badge-intermediate">Intermediate</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Local vs client-server deployment</li>
+                        <li>Collection management</li>
+                        <li>Document & metadata storage</li>
+                        <li>Query operations</li>
+                        <li>LangChain integration</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://docs.trychroma.com/" class="resource-link" target="_blank">📘 ChromaDB Docs</a>
+                        <a href="https://www.youtube.com/watch?v=ODYd9LUe6Lk" class="resource-link" target="_blank">📺 ChromaDB Tutorial</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🔍</div>
+                        <div>
+                            <h3 class="card-title">Alternatives<span class="badge badge-intermediate">Intermediate</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Weaviate - GraphQL-based</li>
+                        <li>Qdrant - High-performance Rust</li>
+                        <li>Milvus - Cloud-native</li>
+                        <li>FAISS - Facebook's library</li>
+                        <li>PostgreSQL with pgvector</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://weaviate.io/developers/weaviate" class="resource-link" target="_blank">📘 Weaviate</a>
+                        <a href="https://qdrant.tech/documentation/" class="resource-link" target="_blank">📘 Qdrant</a>
+                        <a href="https://milvus.io/docs" class="resource-link" target="_blank">📘 Milvus</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="langchain" class="section">
+            <div class="section-header">
+                <div class="section-number">6</div>
+                <h2 class="section-title">LangChain Ecosystem</h2>
+            </div>
+            <div class="section-intro">
+                Master the complete LangChain ecosystem including LangChain, LangGraph, LangSmith, and Langfuse for building, monitoring, and debugging sophisticated LLM applications.
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">⛓️</div>
+                        <div>
+                            <h3 class="card-title">LangChain Core<span class="badge badge-essential">Essential</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Foundation framework for building LLM applications.</p>
+                    <ul class="key-points">
+                        <li>Chains: Sequential, Router, Transform</li>
+                        <li>Memory: Buffer, Summary, Vector</li>
+                        <li>Document loaders & text splitters</li>
+                        <li>Prompt templates & optimization</li>
+                        <li>Output parsers (Pydantic, JSON)</li>
+                        <li>Retrievers & vector stores</li>
+                        <li>Callbacks & custom handlers</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://python.langchain.com/docs/" class="resource-link" target="_blank">📘 LangChain Docs</a>
+                        <a href="https://www.youtube.com/watch?v=LbT1yp6quS8" class="resource-link" target="_blank">📺 LangChain Tutorial</a>
+                        <a href="https://github.com/langchain-ai/langchain" class="resource-link" target="_blank">💻 LangChain GitHub</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🤖</div>
+                        <div>
+                            <h3 class="card-title">LangChain Agents<span class="badge badge-advanced">Advanced</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Build autonomous agents with reasoning and tool use.</p>
+                    <ul class="key-points">
+                        <li>Agent types: ReAct, Plan-Execute, OpenAI Functions</li>
+                        <li>Tool integration & custom tools</li>
+                        <li>Agent executors & callbacks</li>
+                        <li>Multi-agent orchestration</li>
+                        <li>Agent memory systems</li>
+                        <li>Error handling & retries</li>
+                        <li>Agent debugging strategies</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://python.langchain.com/docs/modules/agents/" class="resource-link" target="_blank">📘 Agents Guide</a>
+                        <a href="https://www.youtube.com/watch?v=jSP-gSEyVeI" class="resource-link" target="_blank">📺 Agents Deep Dive</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🕸️</div>
+                        <div>
+                            <h3 class="card-title">LangGraph<span class="badge badge-advanced">Advanced</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Graph-based orchestration for complex AI workflows.</p>
+                    <ul class="key-points">
+                        <li>State machines for AI workflows</li>
+                        <li>Graph nodes, edges & routing</li>
+                        <li>Multi-agent collaboration patterns</li>
+                        <li>Conditional branching & cycles</li>
+                        <li>Human-in-the-loop integration</li>
+                        <li>Persistent state management</li>
+                        <li>Checkpointing & recovery</li>
+                        <li>Streaming graph execution</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://langchain-ai.github.io/langgraph/" class="resource-link" target="_blank">📘 LangGraph Docs</a>
+                        <a href="https://www.youtube.com/watch?v=9BPCV5TYPmg" class="resource-link" target="_blank">📺 LangGraph Intro</a>
+                        <a href="https://github.com/langchain-ai/langgraph" class="resource-link" target="_blank">💻 LangGraph GitHub</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🔍</div>
+                        <div>
+                            <h3 class="card-title">LangSmith<span class="badge badge-production">Production</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">LLM application development and debugging platform.</p>
+                    <ul class="key-points">
+                        <li>Tracing & observability</li>
+                        <li>Prompt playground & testing</li>
+                        <li>Dataset creation & management</li>
+                        <li>Evaluation & benchmarking</li>
+                        <li>Performance monitoring</li>
+                        <li>Debugging complex chains</li>
+                        <li>Annotation & feedback collection</li>
+                        <li>Collaborative development</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://docs.smith.langchain.com/" class="resource-link" target="_blank">📘 LangSmith Docs</a>
+                        <a href="https://www.youtube.com/watch?v=nOYpJw6TazY" class="resource-link" target="_blank">📺 LangSmith Tutorial</a>
+                        <a href="https://smith.langchain.com/" class="resource-link" target="_blank">🌐 LangSmith Platform</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📊</div>
+                        <div>
+                            <h3 class="card-title">Langfuse<span class="badge badge-production">Production</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Open-source LLM engineering platform for observability.</p>
+                    <ul class="key-points">
+                        <li>Trace logging & visualization</li>
+                        <li>Cost tracking & analytics</li>
+                        <li>Prompt management & versioning</li>
+                        <li>User feedback collection</li>
+                        <li>LLM metrics & dashboards</li>
+                        <li>Dataset curation</li>
+                        <li>Integration with LangChain</li>
+                        <li>Self-hosted or cloud options</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://langfuse.com/docs" class="resource-link" target="_blank">📘 Langfuse Docs</a>
+                        <a href="https://github.com/langfuse/langfuse" class="resource-link" target="_blank">💻 Langfuse GitHub</a>
+                        <a href="https://www.youtube.com/watch?v=1v7e4_KN6N4" class="resource-link" target="_blank">📺 Langfuse Overview</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📦</div>
+                        <div>
+                            <h3 class="card-title">LangChain Templates & Hubs<span class="badge badge-intermediate">Intermediate</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Pre-built templates and community resources.</p>
+                    <ul class="key-points">
+                        <li>LangChain Templates for quick starts</li>
+                        <li>LangChain Hub for prompts</li>
+                        <li>Community integrations</li>
+                        <li>Ready-to-use RAG templates</li>
+                        <li>Agent architecture patterns</li>
+                        <li>Best practices & examples</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://python.langchain.com/docs/templates" class="resource-link" target="_blank">📘 Templates Docs</a>
+                        <a href="https://smith.langchain.com/hub" class="resource-link" target="_blank">🌐 LangChain Hub</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🔌</div>
+                        <div>
+                            <h3 class="card-title">LangChain Integrations<span class="badge badge-essential">Essential</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Connect with various LLM providers and tools.</p>
+                    <ul class="key-points">
+                        <li>LLM providers (OpenAI, Anthropic, etc.)</li>
+                        <li>Vector stores integrations</li>
+                        <li>Document loaders (100+ types)</li>
+                        <li>Embeddings providers</li>
+                        <li>Tool integrations (APIs, databases)</li>
+                        <li>Memory stores (Redis, DynamoDB)</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://python.langchain.com/docs/integrations/platforms/" class="resource-link" target="_blank">📘 Integrations Guide</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">⚙️</div>
+                        <div>
+                            <h3 class="card-title">LangServe<span class="badge badge-production">Production</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Deploy LangChain apps as REST APIs.</p>
+                    <ul class="key-points">
+                        <li>FastAPI-based deployment</li>
+                        <li>Automatic API generation</li>
+                        <li>Streaming support</li>
+                        <li>Playground UI</li>
+                        <li>Input/output schemas</li>
+                        <li>Production-ready servers</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://python.langchain.com/docs/langserve" class="resource-link" target="_blank">📘 LangServe Docs</a>
+                        <a href="https://github.com/langchain-ai/langserve" class="resource-link" target="_blank">💻 LangServe GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cloud-ai" class="section">
+            <div class="section-header">
+                <div class="section-number">7</div>
+                <h2 class="section-title">Cloud AI Services</h2>
+            </div>
+            <div class="section-intro">
+                Master managed AI/ML services from major cloud providers. Learn to leverage enterprise-grade AI infrastructure for scalable deployments.
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🔶</div>
+                        <div>
+                            <h3 class="card-title">AWS Bedrock<span class="badge badge-production">Production</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Fully managed service for foundation models on AWS.</p>
+                    <ul class="key-points">
+                        <li>Access to Anthropic Claude, Llama, Mistral</li>
+                        <li>Amazon Titan models</li>
+                        <li>Model customization & fine-tuning</li>
+                        <li>Agents for Bedrock</li>
+                        <li>Knowledge Bases for RAG</li>
+                        <li>Guardrails for content filtering</li>
+                        <li>Inference optimization</li>
+                        <li>Cost-effective pricing models</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://aws.amazon.com/bedrock/" class="resource-link" target="_blank">📘 AWS Bedrock</a>
+                        <a href="https://docs.aws.amazon.com/bedrock/" class="resource-link" target="_blank">📘 Bedrock Docs</a>
+                        <a href="https://www.youtube.com/watch?v=ab1mbj0acDo" class="resource-link" target="_blank">📺 Bedrock Tutorial</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🔶</div>
+                        <div>
+                            <h3 class="card-title">AWS SageMaker<span class="badge badge-production">Production</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">End-to-end ML platform for building and deploying models.</p>
+                    <ul class="key-points">
+                        <li>SageMaker Studio & Notebooks</li>
+                        <li>Training jobs & hyperparameter tuning</li>
+                        <li>Model deployment & endpoints</li>
+                        <li>SageMaker Pipelines (MLOps)</li>
+                        <li>Feature Store</li>
+                        <li>Model Monitor for drift detection</li>
+                        <li>Batch transform</li>
+                        <li>Autopilot for AutoML</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://aws.amazon.com/sagemaker/" class="resource-link" target="_blank">📘 SageMaker Overview</a>
+                        <a href="https://docs.aws.amazon.com/sagemaker/" class="resource-link" target="_blank">📘 SageMaker Docs</a>
+                        <a href="https://www.youtube.com/watch?v=uQc8Itd4UTs" class="resource-link" target="_blank">📺 SageMaker Course</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">☁️</div>
+                        <div>
+                            <h3 class="card-title">GCP Vertex AI<span class="badge badge-production">Production</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Google Cloud's unified ML platform.</p>
+                    <ul class="key-points">
+                        <li>Vertex AI Workbench for development</li>
+                        <li>Model Garden (pre-trained models)</li>
+                        <li>Generative AI Studio</li>
+                        <li>PaLM 2 and Gemini integration</li>
+                        <li>Custom model training</li>
+                        <li>Managed endpoints deployment</li>
+                        <li>Feature Store & ML Metadata</li>
+                        <li>Model Monitoring</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://cloud.google.com/vertex-ai" class="resource-link" target="_blank">📘 Vertex AI</a>
+                        <a href="https://cloud.google.com/vertex-ai/docs" class="resource-link" target="_blank">📘 Vertex AI Docs</a>
+                        <a href="https://www.youtube.com/watch?v=gT4qqHMiEpA" class="resource-link" target="_blank">📺 Vertex AI Tutorial</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🔷</div>
+                        <div>
+                            <h3 class="card-title">Azure OpenAI Service<span class="badge badge-production">Production</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Enterprise-grade OpenAI models on Azure.</p>
+                    <ul class="key-points">
+                        <li>GPT-4, GPT-3.5-turbo access</li>
+                        <li>DALL-E for image generation</li>
+                        <li>Whisper for speech-to-text</li>
+                        <li>Azure OpenAI Studio</li>
+                        <li>Enterprise security & compliance</li>
+                        <li>Fine-tuning capabilities</li>
+                        <li>Content filtering</li>
+                        <li>Regional deployment options</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://azure.microsoft.com/en-us/products/ai-services/openai-service" class="resource-link" target="_blank">📘 Azure OpenAI</a>
+                        <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/" class="resource-link" target="_blank">📘 Azure OpenAI Docs</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🔷</div>
+                        <div>
+                            <h3 class="card-title">Azure ML<span class="badge badge-production">Production</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Microsoft's comprehensive ML platform.</p>
+                    <ul class="key-points">
+                        <li>Azure ML Studio</li>
+                        <li>Designer for visual ML pipelines</li>
+                        <li>Automated ML (AutoML)</li>
+                        <li>MLOps with Azure DevOps</li>
+                        <li>Managed compute clusters</li>
+                        <li>Model registry & versioning</li>
+                        <li>Real-time & batch inferencing</li>
+                        <li>Responsible AI dashboard</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://azure.microsoft.com/en-us/products/machine-learning/" class="resource-link" target="_blank">📘 Azure ML</a>
+                        <a href="https://learn.microsoft.com/en-us/azure/machine-learning/" class="resource-link" target="_blank">📘 Azure ML Docs</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🤗</div>
+                        <div>
+                            <h3 class="card-title">Hugging Face Inference<span class="badge badge-intermediate">Intermediate</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Managed inference for open-source models.</p>
+                    <ul class="key-points">
+                        <li>Inference Endpoints (managed)</li>
+                        <li>Inference API (serverless)</li>
+                        <li>1000+ pre-trained models</li>
+                        <li>Custom model deployment</li>
+                        <li>Auto-scaling infrastructure</li>
+                        <li>Cost-effective pricing</li>
+                        <li>Easy integration</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://huggingface.co/inference-endpoints" class="resource-link" target="_blank">📘 Inference Endpoints</a>
+                        <a href="https://huggingface.co/docs/inference-endpoints/" class="resource-link" target="_blank">📘 HF Inference Docs</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🚀</div>
+                        <div>
+                            <h3 class="card-title">Other Cloud Platforms<span class="badge badge-intermediate">Intermediate</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Alternative managed AI/ML services.</p>
+                    <ul class="key-points">
+                        <li>Replicate - Easy model deployment</li>
+                        <li>Modal - Serverless compute for ML</li>
+                        <li>Together AI - Fast inference</li>
+                        <li>Anyscale - Ray-based scaling</li>
+                        <li>RunPod - GPU cloud platform</li>
+                        <li>Banana.dev - ML model hosting</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://replicate.com/" class="resource-link" target="_blank">📘 Replicate</a>
+                        <a href="https://modal.com/" class="resource-link" target="_blank">📘 Modal</a>
+                        <a href="https://www.together.ai/" class="resource-link" target="_blank">📘 Together AI</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">💰</div>
+                        <div>
+                            <h3 class="card-title">Cloud Cost Optimization<span class="badge badge-production">Production</span></h3>
+                        </div>
+                    </div>
+                    <p class="card-description">Strategies for managing cloud AI costs.</p>
+                    <ul class="key-points">
+                        <li>Spot instances & preemptible VMs</li>
+                        <li>Auto-scaling policies</li>
+                        <li>Model caching strategies</li>
+                        <li>Batch vs real-time inference</li>
+                        <li>Reserved capacity planning</li>
+                        <li>Cost monitoring & alerts</li>
+                        <li>Multi-cloud cost comparison</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="rag" class="section">
+            <div class="section-header">
+                <div class="section-number">8</div>
+                <h2 class="section-title">RAG Systems</h2>
+            </div>
+            <div class="section-intro">
+                Master advanced RAG techniques for production-grade question-answering systems.
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📄</div>
+                        <div>
+                            <h3 class="card-title">Document Chunking<span class="badge badge-essential">Essential</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Fixed-size vs semantic chunking</li>
+                        <li>Recursive character splitting</li>
+                        <li>Structure-aware splitting</li>
+                        <li>Overlapping chunks</li>
+                        <li>Chunk size optimization</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://www.pinecone.io/learn/chunking-strategies/" class="resource-link" target="_blank">📚 Chunking Guide</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🔍</div>
+                        <div>
+                            <h3 class="card-title">Retrieval Strategies<span class="badge badge-essential">Essential</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Dense retrieval with embeddings</li>
+                        <li>Sparse retrieval (BM25)</li>
+                        <li>Hybrid search</li>
+                        <li>Embedding model selection</li>
+                        <li>Retrieval metrics</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://www.youtube.com/watch?v=sVcwVQRHIc8" class="resource-link" target="_blank">📺 RAG from Scratch</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">⚡</div>
+                        <div>
+                            <h3 class="card-title">Advanced RAG<span class="badge badge-advanced">Advanced</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Query expansion & rewriting</li>
+                        <li>Parent document retrieval</li>
+                        <li>Multi-query retrieval</li>
+                        <li>Contextual compression</li>
+                        <li>Re-ranking documents</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://www.youtube.com/watch?v=u5Vcrwpzoz8" class="resource-link" target="_blank">📺 Advanced RAG</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🎭</div>
+                        <div>
+                            <h3 class="card-title">Multi-Modal RAG<span class="badge badge-advanced">Advanced</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Text + image retrieval</li>
+                        <li>Audio transcription & search</li>
+                        <li>Video content indexing</li>
+                        <li>Cross-modal embeddings (CLIP)</li>
+                        <li>OCR for documents</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🕸️</div>
+                        <div>
+                            <h3 class="card-title">Graph RAG<span class="badge badge-advanced">Advanced</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Knowledge graph construction</li>
+                        <li>Entity & relationship extraction</li>
+                        <li>Graph-based retrieval</li>
+                        <li>Path reasoning</li>
+                        <li>Neo4j integration</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://neo4j.com/developer/graph-data-science/" class="resource-link" target="_blank">📘 Neo4j Graph</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📊</div>
+                        <div>
+                            <h3 class="card-title">RAG Evaluation<span class="badge badge-production">Production</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Retrieval metrics (MRR, NDCG)</li>
+                        <li>Generation quality assessment</li>
+                        <li>Answer relevance scoring</li>
+                        <li>Faithfulness evaluation</li>
+                        <li>RAGAS framework</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://docs.ragas.io/" class="resource-link" target="_blank">📘 RAGAS Docs</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="agents" class="section">
+            <div class="section-header">
+                <div class="section-number">9</div>
+                <h2 class="section-title">AI Agents</h2>
+            </div>
+            <div class="section-intro">
+                Build intelligent agents that reason, plan, use tools, and autonomously accomplish tasks.
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🛠️</div>
+                        <div>
+                            <h3 class="card-title">Tool-Using Agents<span class="badge badge-advanced">Advanced</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Function calling (OpenAI, Anthropic)</li>
+                        <li>Tool schemas & descriptions</li>
+                        <li>Tool selection strategies</li>
+                        <li>Parallel tool execution</li>
+                        <li>Custom tool development</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://www.youtube.com/watch?v=DWUdGhRrv2c" class="resource-link" target="_blank">📺 Building AI Agents</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🌐</div>
+                        <div>
+                            <h3 class="card-title">Web Agents<span class="badge badge-advanced">Advanced</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Web scraping (Beautiful Soup)</li>
+                        <li>Dynamic content (Playwright)</li>
+                        <li>API-based data collection</li>
+                        <li>Web navigation automation</li>
+                        <li>Anti-bot handling</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/" class="resource-link" target="_blank">📘 Beautiful Soup</a>
+                        <a href="https://playwright.dev/python/docs/intro" class="resource-link" target="_blank">📘 Playwright</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🗄️</div>
+                        <div>
+                            <h3 class="card-title">Database Agents<span class="badge badge-advanced">Advanced</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Text-to-SQL generation</li>
+                        <li>Query validation & safety</li>
+                        <li>Result interpretation</li>
+                        <li>Schema understanding</li>
+                        <li>Multi-database support</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://python.langchain.com/docs/use_cases/sql/" class="resource-link" target="_blank">📘 SQL Database Agent</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🧠</div>
+                        <div>
+                            <h3 class="card-title">Multi-Step Reasoning<span class="badge badge-advanced">Advanced</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Chain-of-thought implementation</li>
+                        <li>Planning & execution separation</li>
+                        <li>Self-critique mechanisms</li>
+                        <li>Iterative refinement</li>
+                        <li>Backtracking strategies</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">💾</div>
+                        <div>
+                            <h3 class="card-title">Agent Memory<span class="badge badge-advanced">Advanced</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Short-term memory (buffer)</li>
+                        <li>Long-term memory (vector store)</li>
+                        <li>Working memory patterns</li>
+                        <li>Memory consolidation</li>
+                        <li>Entity tracking</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🤝</div>
+                        <div>
+                            <h3 class="card-title">Multi-Agent Systems<span class="badge badge-advanced">Advanced</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Agent-to-agent communication</li>
+                        <li>Task delegation</li>
+                        <li>Supervisor patterns</li>
+                        <li>Collaborative problem-solving</li>
+                        <li>Result aggregation</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://langchain-ai.github.io/langgraph/" class="resource-link" target="_blank">📘 Multi-Agent with LangGraph</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="production" class="section">
+            <div class="section-header">
+                <div class="section-number">10</div>
+                <h2 class="section-title">Production Deployment</h2>
+            </div>
+            <div class="section-intro">
+                Deploy, monitor, and maintain AI/ML systems in production with focus on scalability and reliability.
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🚀</div>
+                        <div>
+                            <h3 class="card-title">Model Serving<span class="badge badge-production">Production</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>FastAPI for model serving</li>
+                        <li>Uvicorn & Gunicorn setup</li>
+                        <li>Load balancing</li>
+                        <li>Model versioning</li>
+                        <li>A/B testing</li>
+                        <li>Blue-green deployments</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://fastapi.tiangolo.com/deployment/" class="resource-link" target="_blank">📘 FastAPI Deployment</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">☁️</div>
+                        <div>
+                            <h3 class="card-title">Cloud Deployment<span class="badge badge-production">Production</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>AWS: EC2, Lambda, SageMaker</li>
+                        <li>Google Cloud: Vertex AI</li>
+                        <li>Azure: Azure ML</li>
+                        <li>Serverless deployment</li>
+                        <li>Kubernetes basics</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://aws.amazon.com/sagemaker/" class="resource-link" target="_blank">📘 AWS SageMaker</a>
+                        <a href="https://cloud.google.com/vertex-ai" class="resource-link" target="_blank">📘 Vertex AI</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📊</div>
+                        <div>
+                            <h3 class="card-title">Monitoring<span class="badge badge-production">Production</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>APM & metrics collection</li>
+                        <li>Prometheus & Grafana</li>
+                        <li>Custom metrics for ML</li>
+                        <li>Latency & throughput tracking</li>
+                        <li>Alert configuration</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://prometheus.io/docs/" class="resource-link" target="_blank">📘 Prometheus</a>
+                        <a href="https://grafana.com/docs/" class="resource-link" target="_blank">📘 Grafana</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📝</div>
+                        <div>
+                            <h3 class="card-title">Logging & Errors<span class="badge badge-production">Production</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Structured logging</li>
+                        <li>Centralized log management (ELK)</li>
+                        <li>Error tracking (Sentry)</li>
+                        <li>Log aggregation</li>
+                        <li>Trace context propagation</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://docs.sentry.io/" class="resource-link" target="_blank">📘 Sentry</a>
+                        <a href="https://www.elastic.co/elastic-stack" class="resource-link" target="_blank">📘 ELK Stack</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🔬</div>
+                        <div>
+                            <h3 class="card-title">LLM Monitoring<span class="badge badge-production">Production</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>Prompt & completion logging</li>
+                        <li>LangSmith tracing</li>
+                        <li>Langfuse observability</li>
+                        <li>Token usage monitoring</li>
+                        <li>Cost tracking</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://docs.smith.langchain.com/" class="resource-link" target="_blank">📘 LangSmith</a>
+                        <a href="https://langfuse.com/docs" class="resource-link" target="_blank">📘 Langfuse</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🛡️</div>
+                        <div>
+                            <h3 class="card-title">Security<span class="badge badge-production">Production</span></h3>
+                        </div>
+                    </div>
+                    <ul class="key-points">
+                        <li>API key & secrets management</li>
+                        <li>Input validation</li>
+                        <li>Rate limiting & throttling</li>
+                        <li>Authentication & authorization</li>
+                        <li>Prompt injection prevention</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Resources:</div>
+                        <a href="https://owasp.org/www-project-top-ten/" class="resource-link" target="_blank">📚 OWASP Top 10</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="timeline" class="section">
+            <div class="section-header">
+                <div class="section-number">📅</div>
+                <h2 class="section-title">12-Month Learning Timeline</h2>
+            </div>
+            <div class="section-intro">
+                Structured progression from fundamentals to advanced AI/ML engineering with clear milestones.
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1-2</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Phase 1: Python & Fundamentals</h3>
+                        <p class="timeline-duration">Months 1-2</p>
+                        <p class="card-description">Build strong foundation in Python and development tools.</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Core Python</span>
+                            <span class="timeline-tag">Git & GitHub</span>
+                            <span class="timeline-tag">Virtual Env</span>
+                            <span class="timeline-tag">Docker Basics</span>
+                            <span class="timeline-tag">NumPy & Pandas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">3-4</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Phase 2: ML Foundations & APIs</h3>
+                        <p class="timeline-duration">Months 3-4</p>
+                        <p class="card-description">Learn ML basics and build REST APIs with FastAPI.</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Scikit-learn</span>
+                            <span class="timeline-tag">FastAPI</span>
+                            <span class="timeline-tag">Feature Engineering</span>
+                            <span class="timeline-tag">SQL Basics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">5-6</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Phase 3: LLMs & Prompt Engineering</h3>
+                        <p class="timeline-duration">Months 5-6</p>
+                        <p class="card-description">Dive into Large Language Models and master prompting.</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Transformers</span>
+                            <span class="timeline-tag">OpenAI API</span>
+                            <span class="timeline-tag">Prompt Engineering</span>
+                            <span class="timeline-tag">Embeddings</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">7-8</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Phase 4: Vector DBs & LangChain</h3>
+                        <p class="timeline-duration">Months 7-8</p>
+                        <p class="card-description">Master vector databases and LangChain framework.</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Pinecone</span>
+                            <span class="timeline-tag">ChromaDB</span>
+                            <span class="timeline-tag">LangChain</span>
+                            <span class="timeline-tag">Chains & Agents</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">9-10</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Phase 5: Advanced RAG & Agents</h3>
+                        <p class="timeline-duration">Months 9-10</p>
+                        <p class="card-description">Implement advanced RAG and build autonomous agents.</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Advanced RAG</span>
+                            <span class="timeline-tag">Graph RAG</span>
+                            <span class="timeline-tag">LangGraph</span>
+                            <span class="timeline-tag">Multi-Agent</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">11-12</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Phase 6: Production & Capstone</h3>
+                        <p class="timeline-duration">Months 11-12</p>
+                        <p class="card-description">Deploy production systems and build capstone project.</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Docker Deploy</span>
+                            <span class="timeline-tag">Cloud Services</span>
+                            <span class="timeline-tag">Monitoring</span>
+                            <span class="timeline-tag">Capstone Project</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="section-header">
+                <div class="section-number">💡</div>
+                <h2 class="section-title">Project Ideas</h2>
+            </div>
+            <div class="section-intro">
+                Build these projects to solidify learning and create an impressive portfolio.
+            </div>
+
+            <h3 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem;">Beginner Projects</h3>
+            <div class="grid">
+                <div class="project-card">
+                    <span class="project-level level-beginner">Beginner</span>
+                    <h4 class="project-title">Task Management API</h4>
+                    <p class="project-description">Build full CRUD API with authentication and PostgreSQL database.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">JWT</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-level level-beginner">Beginner</span>
+                    <h4 class="project-title">Movie Recommender</h4>
+                    <p class="project-description">Content-based and collaborative filtering recommendation system.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">Streamlit</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-level level-beginner">Beginner</span>
+                    <h4 class="project-title">Sentiment Analysis API</h4>
+                    <p class="project-description">Text classification API with ML model serving.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">NLP</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem;">Intermediate Projects</h3>
+            <div class="grid">
+                <div class="project-card">
+                    <span class="project-level level-intermediate">Intermediate</span>
+                    <h4 class="project-title">AI Document Q&A System</h4>
+                    <p class="project-description">RAG application answering questions from uploaded PDFs.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">Pinecone</span>
+                        <span class="tech-tag">OpenAI</span>
+                        <span class="tech-tag">Streamlit</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-level level-intermediate">Intermediate</span>
+                    <h4 class="project-title">Code Review Assistant</h4>
+                    <p class="project-description">LLM-powered tool analyzing code for bugs and improvements.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">GPT-4</span>
+                        <span class="tech-tag">GitHub API</span>
+                        <span class="tech-tag">FastAPI</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-level level-intermediate">Intermediate</span>
+                    <h4 class="project-title">Customer Support Chatbot</h4>
+                    <p class="project-description">Intelligent chatbot with memory and knowledge base.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">ChromaDB</span>
+                        <span class="tech-tag">Claude/GPT</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-level level-intermediate">Intermediate</span>
+                    <h4 class="project-title">SQL Query Generator</h4>
+                    <p class="project-description">Natural language to SQL interface for databases.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Text-to-SQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem;">Advanced Projects</h3>
+            <div class="grid">
+                <div class="project-card">
+                    <span class="project-level level-advanced">Advanced</span>
+                    <h4 class="project-title">Multi-Agent Research Assistant</h4>
+                    <p class="project-description">System with specialized agents for research and analysis.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">LangGraph</span>
+                        <span class="tech-tag">Multi-Agent</span>
+                        <span class="tech-tag">RAG</span>
+                        <span class="tech-tag">Web Scraping</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-level level-advanced">Advanced</span>
+                    <h4 class="project-title">Enterprise Document Intelligence</h4>
+                    <p class="project-description">Advanced RAG with graph-based knowledge extraction.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Graph RAG</span>
+                        <span class="tech-tag">Neo4j</span>
+                        <span class="tech-tag">Multi-Modal</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-level level-advanced">Advanced</span>
+                    <h4 class="project-title">AI Analytics Dashboard</h4>
+                    <p class="project-description">Real-time analytics with LLM-generated insights.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">Real-time</span>
+                        <span class="tech-tag">LLM Insights</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-level level-advanced">Advanced</span>
+                    <h4 class="project-title">Autonomous Web Agent</h4>
+                    <p class="project-description">Agent that autonomously browses web and compiles reports.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Web Agents</span>
+                        <span class="tech-tag">Playwright</span>
+                        <span class="tech-tag">LangGraph</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="cta">
+            <h2 class="cta-title">Ready to Start Your AI/ML Journey?</h2>
+            <p class="cta-text">
+                This comprehensive guide provides everything needed to become a proficient AI/ML engineer. 
+                Focus on building projects, contribute to open source, and stay curious!
+            </p>
+            <div class="cta-buttons">
+                <a href="#timeline" class="cta-button">View Learning Timeline</a>
+                <a href="#projects" class="cta-button">Explore Projects</a>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">📚</div>
+                <h2 class="section-title">Resources & Communities</h2>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">👥</div>
+                        <h3 class="card-title">Communities</h3>
+                    </div>
+                    <div class="resources">
+                        <a href="https://discord.gg/langchain" class="resource-link" target="_blank">💬 LangChain Discord</a>
+                        <a href="https://discuss.huggingface.co/" class="resource-link" target="_blank">🤗 Hugging Face Forums</a>
+                        <a href="https://www.reddit.com/r/MachineLearning/" class="resource-link" target="_blank">🔴 r/MachineLearning</a>
+                        <a href="https://www.reddit.com/r/learnpython/" class="resource-link" target="_blank">🐍 r/learnpython</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📺</div>
+                        <h3 class="card-title">YouTube Channels</h3>
+                    </div>
+                    <div class="resources">
+                        <a href="https://www.youtube.com/@AndrejKarpathy" class="resource-link" target="_blank">📺 Andrej Karpathy</a>
+                        <a href="https://www.youtube.com/@sentdex" class="resource-link" target="_blank">📺 Sentdex</a>
+                        <a href="https://www.youtube.com/@statquest" class="resource-link" target="_blank">📺 StatQuest</a>
+                        <a href="https://www.youtube.com/@3blue1brown" class="resource-link" target="_blank">📺 3Blue1Brown</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📰</div>
+                        <h3 class="card-title">Newsletters & Blogs</h3>
+                    </div>
+                    <div class="resources">
+                        <a href="https://www.deeplearning.ai/the-batch/" class="resource-link" target="_blank">📧 The Batch by Andrew Ng</a>
+                        <a href="https://importai.substack.com/" class="resource-link" target="_blank">📧 Import AI</a>
+                        <a href="https://towardsdatascience.com/" class="resource-link" target="_blank">📝 Towards Data Science</a>
+                        <a href="https://machinelearningmastery.com/" class="resource-link" target="_blank">📚 ML Mastery</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">💡</div>
+                        <h3 class="card-title">Best Practices</h3>
+                    </div>
+                    <ul class="key-points">
+                        <li>Build projects while learning</li>
+                        <li>Read official documentation</li>
+                        <li>Join communities and ask questions</li>
+                        <li>Stay updated with latest research</li>
+                        <li>Focus on fundamentals first</li>
+                        <li>Practice daily consistently</li>
+                        <li>Contribute to open source</li>
+                        <li>Document your journey</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="footer">
+        <p><strong>AI/ML Engineering Learning Path</strong> - Version 1.0</p>
+        <p style="margin-top: 0.5rem;">For aspiring AI/ML engineers building production-ready systems</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">
+            Last Updated: December 2024 | Keep learning, keep building! 🚀
+        </p>
+    </div>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
