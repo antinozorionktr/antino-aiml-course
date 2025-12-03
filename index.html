@@ -510,6 +510,7 @@
             <a href="#overview">Overview</a>
             <a href="#python">Python</a>
             <a href="#ml">ML Foundations</a>
+            <a href="#hardware">Hardware</a>
             <a href="#ml-domains">ML Domains</a>
             <a href="#llms">LLMs</a>
             <a href="#vectordb">Vector DBs</a>
@@ -821,6 +822,110 @@
                         <a href="https://scikit-learn.org/stable/" class="resource-link" target="_blank">📘 Scikit-learn Docs</a>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section id="hardware" class="section">
+            <div class="section-header">
+                <div class="section-number">⚙️</div>
+                <h2 class="section-title">Hardware for AI/ML: CPU vs GPU vs TPU vs Other Processing Units</h2>
+            </div>
+
+            <div class="section-intro">
+                Understanding compute hardware is essential for training, deploying and optimizing AI/ML models. Different workloads require different processing architectures for best performance.
+            </div>
+
+            <div class="grid">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🖥️</div>
+                        <h3 class="card-title">CPU (Central Processing Unit)<span class="badge badge-essential">Essential</span></h3>
+                    </div>
+                    <p class="card-description">General-purpose processor designed for sequential tasks and low-latency operations.</p>
+                    <ul class="key-points">
+                        <li>Great for training small ML models</li>
+                        <li>Efficient for inference workloads</li>
+                        <li>Ideal for preprocessing, data engineering, ETL pipelines</li>
+                        <li>Not suitable for large matrix multiplications</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Learn More</div>
+                        <a href="https://www.intel.com/content/www/us/en/products/details/processors/core.html" target="_blank" class="resource-link">Intel CPU Overview</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🎮</div>
+                        <h3 class="card-title">GPU (Graphics Processing Unit)<span class="badge badge-production">Production</span></h3>
+                    </div>
+                    <p class="card-description">Massively parallel architecture built for high-speed matrix operations used in deep learning.</p>
+                    <ul class="key-points">
+                        <li>Ideal for deep learning training & large neural networks</li>
+                        <li>Thousands of cores enabling parallel execution</li>
+                        <li>Used for CNNs, RNNs, Transformers</li>
+                        <li>Popular frameworks: CUDA, cuDNN, TensorRT</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Learn More</div>
+                        <a href="https://developer.nvidia.com/cuda-zone" class="resource-link" target="_blank">NVIDIA CUDA Docs</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">⚡</div>
+                        <h3 class="card-title">TPU (Tensor Processing Unit)<span class="badge badge-advanced">Advanced</span></h3>
+                    </div>
+                    <p class="card-description">Custom ML accelerator designed by Google optimized for tensor operations used in neural networks.</p>
+                    <ul class="key-points">
+                        <li>High performance for large-scale DL training</li>
+                        <li>Optimized for TensorFlow compute graph</li>
+                        <li>Used in LLM and generative AI workloads</li>
+                        <li>Available via Google Cloud</li>
+                    </ul>
+                    <div class="resources">
+                        <div class="resource-title">📚 Learn More</div>
+                        <a href="https://cloud.google.com/tpu" class="resource-link" target="_blank">Google TPU Documentation</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🤖</div>
+                        <h3 class="card-title">NPU / AI Accelerator<span class="badge badge-intermediate">Intermediate</span></h3>
+                    </div>
+                    <p class="card-description">Low-power neural processors for edge and mobile AI applications.</p>
+                    <ul class="key-points">
+                        <li>Found in Apple Neural Engine, Snapdragon AI, Intel Movidius</li>
+                        <li>Excellent for inference at the edge</li>
+                        <li>Low power consumption</li>
+                        <li>Great for speech recognition, vision tasks, ML on IoT</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🧠</div>
+                        <h3 class="card-title">IPU (Intelligence Processing Unit)<span class="badge badge-advanced">Advanced</span></h3>
+                    </div>
+                    <p class="card-description">Designed specifically for neural network training with fine-grained parallelism.</p>
+                    <ul class="key-points">
+                        <li>Used for very large models & enterprise training</li>
+                        <li>High memory bandwidth & parallel control</li>
+                        <li>Developed by Graphcore</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section-intro" style="margin-top: 1.5rem;">
+                <strong>💡 Summary (When to use what)</strong><br>
+                - Use <strong>CPU</strong> for lightweight ML, preprocessing & inference<br>
+                - Use <strong>GPU</strong> for deep learning and large matrix multiplications<br>
+                - Use <strong>TPU</strong> for large-scale training on Google Cloud<br>
+                - Use <strong>NPU</strong> for mobile & edge inference<br>
+                - Use <strong>IPU</strong> for research-grade neural training
             </div>
         </section>
 
